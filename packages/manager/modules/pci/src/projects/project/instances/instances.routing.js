@@ -27,33 +27,8 @@ export default /* @ngInject */ ($stateProvider) => {
         $q,
         PciProjectsProjectInstanceService,
         projectId,
-      ) =>
-        PciProjectsProjectInstanceService.getAll(projectId)
-          .then((instances) =>
-            $q.all(
-              map(instances, (instance) =>
-                PciProjectsProjectInstanceService.getInstanceFlavor(
-                  projectId,
-                  instance,
-                ).then(
-                  (flavor) =>
-                    new Instance({
-                      ...instance,
-                      flavor,
-                    }),
-                ),
-              ),
-            ),
-          )
-          .then((instances) =>
-            filter(
-              instances,
-              (instance) =>
-                !find(TYPES_TO_EXCLUDE, (pattern) =>
-                  pattern.test(get(instance, 'flavor.type')),
-                ),
-            ),
-          ),
+      ) => PciProjectsProjectInstanceService.getGrapgQlIntances(projectId),
+      // ) => PciProjectsProjectInstanceService.getAll(projectId),
       addInstance: /* @ngInject */ ($state, projectId) => () =>
         $state.go('pci.projects.project.instances.add', {
           projectId,

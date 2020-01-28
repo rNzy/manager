@@ -35,10 +35,8 @@
     ></cui-message-container>
 
     <oui-datagrid
-        id="publicCloudInstancesDatagrid"
-        data-rows="$ctrl.instances"
-        data-row-loader="$ctrl.loadInstanceDetail($row)"
-    >
+        data-rows="$ctrl.instances">
+        <!-- data-row-loader="$ctrl.loadInstanceDetail($row)"> -->
         <oui-column
             title=":: 'pci_projects_project_instances_name_label' | translate"
             data-property="name"

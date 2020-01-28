@@ -42,6 +42,10 @@ export default class CloudProjectComputeInfrastructureListCtrl {
   }
 
   loadInstanceDetail(instance) {
+    // return this.PciProjectsProjectInstanceService.getGrapgQlIntancesDetails(
+    //   this.projectId,
+    //   instance,
+    // );
     return this.PciProjectsProjectInstanceService.getInstanceDetails(
       this.projectId,
       instance,
