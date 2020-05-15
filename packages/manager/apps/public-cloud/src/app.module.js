@@ -26,6 +26,7 @@ import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';
 import ngUiRouterBreadcrumb from '@ovh-ux/ng-ui-router-breadcrumb';
 import ngUiRouterLineProgress from '@ovh-ux/ng-ui-router-line-progress';
+import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import { detach as detachPreloader } from '@ovh-ux/manager-preloader';
 
 import 'ovh-ui-kit/dist/oui.css';
@@ -58,6 +59,7 @@ angular
       ngUiRouterBreadcrumb,
       ngUiRouterLineProgress,
       ngOvhApiWrappers,
+      ngOvhSsoAuthModalPlugin,
       ngOvhUserPref,
       navbar,
       'oui',
