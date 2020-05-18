@@ -7,5 +7,6 @@
   "kubernetes_add_region_title": "Sélectionnez une localisation",
   "kubernetes_add_version_title": "Sélectionnez la version mineure de Kubernetes souhaitée",
   "kubernetes_add_name_title": "Nommez votre cluster",
-  "kubernetes_add_name": "Nom"
+  "kubernetes_add_name": "Nom",
+  "kubernetes_add_billing_type_description": "Vous pourrez passer de la facturation horaire au forfait mensuel en éditant le pool de nœud, après déploiement de votre cluster."
 }
