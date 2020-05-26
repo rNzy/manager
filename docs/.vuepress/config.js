@@ -1,3 +1,8 @@
+const fs = require('fs');
+const { logger } = require('@vuepress/shared-utils');
+
+const { groupedWorkspaces } = require('./cli/prebuild');
+
 module.exports = {
   base: '/manager/',
   title: 'Manager',
@@ -71,9 +76,27 @@ module.exports = {
             'tools',
             'scripts',
             'releasing',
+            'test-e2e',
           ],
         },
       ],
     },
+  },
+  extendCli(cli) {
+    cli
+      .command('prebuild [targetDir]', '')
+      .option('--debug', 'display info in debug mode')
+      .action((dir = '.') => {
+        logger.wait('Pre-building file...');
+        // Output to a static file.
+        return fs.writeFile(
+          `${dir}/.vuepress/public/assets/json/packages.json`,
+          JSON.stringify(groupedWorkspaces),
+          (err) => {
+            if (err) throw err;
+            logger.success('Pre-build file has been successfully generated.');
+          },
+        );
+      });
   },
 };

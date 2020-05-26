@@ -1,3 +1,30 @@
+## [3.3.4](https://github.com/ovh-ux/manager/compare/@ovh-ux/manager-webpack-config@3.3.3...@ovh-ux/manager-webpack-config@3.3.4) (2020-05-18)
+
+
+### Bug Fixes
+
+* respect order in js loaders ([5475fd7](https://github.com/ovh-ux/manager/commit/5475fd7fa6e9c4257cf17f935a943e173861c427))
+
+
+
+## [3.3.3](https://github.com/ovh-ux/manager/compare/@ovh-ux/manager-webpack-config@3.3.2...@ovh-ux/manager-webpack-config@3.3.3) (2020-05-15)
+
+
+### Bug Fixes
+
+* respect order in js loaders ([#2947](https://github.com/ovh-ux/manager/issues/2947)) ([c63f97c](https://github.com/ovh-ux/manager/commit/c63f97cd95bfd39e74dc037ea4ab574aee8df8e2))
+
+
+
+## [3.3.2](https://github.com/ovh-ux/manager/compare/@ovh-ux/manager-webpack-config@3.3.1...@ovh-ux/manager-webpack-config@3.3.2) (2020-05-15)
+
+
+### Bug Fixes
+
+* **loaders:** fix webpack config translations loaders ([a580dfa](https://github.com/ovh-ux/manager/commit/a580dfa68c27bc3088ebc15b85e04fa0d8aa8c4f))
+
+
+
 ## [3.3.1](https://github.com/ovh-ux/manager/compare/@ovh-ux/manager-webpack-config@3.3.0...@ovh-ux/manager-webpack-config@3.3.1) (2020-04-15)
 
 

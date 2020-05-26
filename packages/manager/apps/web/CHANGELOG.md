@@ -1,3 +1,56 @@
+## [14.3.4](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@14.3.3...@ovh-ux/manager-web@14.3.4) (2020-05-25)
+
+
+### Bug Fixes
+
+* **web.hosting:** catch multiple email options error ([5069b58](https://github.com/ovh/manager/commit/5069b58cabb66b1197e9324ba1e1b15811eea0a7))
+
+
+
+## [14.3.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@14.3.2...@ovh-ux/manager-web@14.3.3) (2020-05-18)
+
+
+### Bug Fixes
+
+* **hosting:** handle broken email option service info ([#2960](https://github.com/ovh/manager/issues/2960)) ([0b9c823](https://github.com/ovh/manager/commit/0b9c8233f8db82f4ef0714db141e8206419afbfc))
+
+
+
+## [14.3.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@14.3.1...@ovh-ux/manager-web@14.3.2) (2020-05-14)
+
+
+### Bug Fixes
+
+* **hosting:** catch call to detach if customer has no subscription ([#2948](https://github.com/ovh/manager/issues/2948)) ([f47f120](https://github.com/ovh/manager/commit/f47f12090c4d6c107d1296197554811ad5171900))
+
+
+
+## [14.3.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@14.3.0...@ovh-ux/manager-web@14.3.1) (2020-05-14)
+
+
+### Bug Fixes
+
+* **web:** secure test for email option detachable ([#2934](https://github.com/ovh/manager/issues/2934)) ([1c690d0](https://github.com/ovh/manager/commit/1c690d008b7b764db3df23ac703b6e55857c98b3))
+
+
+
+# [14.3.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@14.2.0...@ovh-ux/manager-web@14.3.0) (2020-05-13)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 375] ([800e37c](https://github.com/ovh/manager/commit/800e37c707971448efae8ce3c2534bde24e6178b))
+* **i18n:** add missing translations [CDS 376] ([a4f0dd2](https://github.com/ovh/manager/commit/a4f0dd27790a6660c11be8c90a4f65c489b5b59e))
+* **translations:** clean translations files ([ac02afd](https://github.com/ovh/manager/commit/ac02afd7ef2f92be18ec3952f937091cc4998bea))
+
+
+### Features
+
+* **hosting:** remove main domain information ([#1935](https://github.com/ovh/manager/issues/1935)) ([e3a1e75](https://github.com/ovh/manager/commit/e3a1e75c76c15ccef89a98f6babbf6075b19adfa))
+* **web:** add detach email ([f38e95f](https://github.com/ovh/manager/commit/f38e95fff293f4bdefca8da05b61976fad60bcd3))
+
+
+
 # [14.2.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-web@14.1.0...@ovh-ux/manager-web@14.2.0) (2020-04-28)
 
 

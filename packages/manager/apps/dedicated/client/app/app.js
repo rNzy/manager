@@ -56,6 +56,9 @@ import dedicatedServerBandwidth from './dedicated/server/bandwidth/bandwidth.mod
 import dedicatedServerInterfaces from './dedicated/server/interfaces/interfaces.module';
 import dedicatedServerServers from './dedicated/server/servers/servers.module';
 
+import datacenterBackup from './dedicatedCloud/datacenter/backup';
+import userContracts from './user-contracts';
+
 Environment.setVersion(__VERSION__);
 
 const moduleName = 'App';
@@ -71,6 +74,7 @@ angular
       'chart.js',
       'controllers',
       contactsService,
+      datacenterBackup,
       dedicatedCloudDatacenterDrp,
       dedicatedServerBandwidth,
       dedicatedServerInterfaces,
@@ -138,6 +142,7 @@ angular
       'ui.validate',
       uiRouter,
       'UserAccount',
+      userContracts,
       'xeditable',
     ].filter(isString),
   )
@@ -305,6 +310,11 @@ angular
         detachPreloader();
         unregisterHook();
       });
+    },
+  )
+  .run(
+    /* @ngInject */ ($translate, $transitions) => {
+      $transitions.onBefore({ to: 'app.**' }, () => $translate.refresh());
     },
   );
 

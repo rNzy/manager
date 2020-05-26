@@ -1,5 +1,4 @@
 import head from 'lodash/head';
-import includes from 'lodash/includes';
 import isEmpty from 'lodash/isEmpty';
 import isObject from 'lodash/isObject';
 
@@ -55,8 +54,15 @@ export default class HostingGeneralInformationsCtrl {
     };
 
     this.goToDetachEmail = this.$scope.goToDetachEmail;
+    this.goToDetachPrivateDB = this.$scope.goToDetachPrivateDB;
     this.isDetachEmailOptionAvailable =
+      this.$scope.emailOptionDetachInformation.length > 0 &&
       this.$scope.emailOptionDetachInformation[0].detachPlancodes.length > 0 &&
+      this.$scope.pendingTasks.length === 0;
+
+    this.isPrivateDatabaseDetachable =
+      this.$scope.privateDatabasesDetachable.length > 0 &&
+      this.$scope.privateDatabasesDetachable[0].detachPlancodes.length > 0 &&
       this.$scope.pendingTasks.length === 0;
 
     const quotaUsed = this.$scope.convertBytesSize(
@@ -224,31 +230,6 @@ export default class HostingGeneralInformationsCtrl {
       type: 'action',
     });
     this.$state.go('app.hosting.upgrade', { productId: this.serviceName });
-  }
-
-  changeMainDomain() {
-    this.atInternet.trackClick({
-      name: 'web::hostname::general-informations::change-main-domain',
-      type: 'action',
-    });
-    this.$scope.setAction(
-      'change-main-domain/hosting-change-main-domain',
-      this.$scope.hosting,
-    );
-  }
-
-  isHostingOffer() {
-    return !includes(
-      [
-        'KIMSUFI_2015',
-        '__60_FREE',
-        'DEMO_1_G',
-        'START_1_M',
-        'START_10_M',
-        '_ASPFREE',
-      ],
-      this.$scope.hosting.offer,
-    );
   }
 
   goToBoostTab() {

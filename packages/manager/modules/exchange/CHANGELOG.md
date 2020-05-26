@@ -1,3 +1,21 @@
+## [1.8.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-exchange@1.8.2...@ovh-ux/manager-exchange@1.8.3) (2020-05-13)
+
+
+### Bug Fixes
+
+* **exchange:** add lazy loading futures states ([#2900](https://github.com/ovh/manager/issues/2900)) ([b84c770](https://github.com/ovh/manager/commit/b84c770beff062342962e3c3c031848dc770aeb2))
+
+
+
+## [1.8.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-exchange@1.8.1...@ovh-ux/manager-exchange@1.8.2) (2020-05-04)
+
+
+### Bug Fixes
+
+* **exchange:** export navigation service ([#2871](https://github.com/ovh/manager/issues/2871)) ([6778070](https://github.com/ovh/manager/commit/67780700c58523edf11a25aa156dd7121ca1b2be))
+
+
+
 ## [1.8.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-exchange@1.8.0...@ovh-ux/manager-exchange@1.8.1) (2020-04-17)
 
 

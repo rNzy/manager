@@ -25,7 +25,6 @@
     "@ovh-ux/manager-pci": "^3.0.0",
     "@ovh-ux/ng-at-internet": "^5.0.0",
     "@ovh-ux/ng-ovh-api-wrappers": "^4.0.7",
-    "@ovh-ux/ng-ovh-apiv7": "^2.0.0",
     "@ovh-ux/ng-ovh-cloud-universe-components": "^1.4.3",
     "@ovh-ux/ng-ovh-contacts": "^3.0.0",
     "@ovh-ux/ng-ovh-payment-method": "^6.0.1",
@@ -54,9 +53,9 @@
     "ovh-api-services": "^9.42.0",
     "ovh-common-style": "^5.0.0",
     "ovh-manager-webfont": "^1.2.0",
-    "ovh-ui-angular": "^3.16.0",
-    "ovh-ui-kit": "^2.41.1",
-    "ovh-ui-kit-bs": "^2.3.1"
+    "ovh-ui-angular": "^3.16.2",
+    "ovh-ui-kit": "^2.42.7",
+    "ovh-ui-kit-bs": "^2.4.6"
   },
   "devDependencies": {
     "@ovh-ux/manager-webpack-config": "^3.0.8",

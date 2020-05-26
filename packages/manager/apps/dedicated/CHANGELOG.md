@@ -1,3 +1,45 @@
+## [12.4.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@12.4.2...@ovh-ux/manager-dedicated@12.4.3) (2020-05-18)
+
+
+### Bug Fixes
+
+* **payment:** update notification for bank account validation ([#2943](https://github.com/ovh/manager/issues/2943)) ([d397535](https://github.com/ovh/manager/commit/d39753574034b0dcb92a40eae68fea7b034344d5))
+
+
+
+## [12.4.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@12.4.1...@ovh-ux/manager-dedicated@12.4.2) (2020-05-14)
+
+
+### Bug Fixes
+
+* **ip:** remove specific route use for vps ([26a476b](https://github.com/ovh/manager/commit/26a476b11a78efe9448fce8b0d73eef4c79bd02b))
+
+
+
+## [12.4.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@12.4.0...@ovh-ux/manager-dedicated@12.4.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* **account.user.support-level:** use correct url for CZ,FI and LT ([#2930](https://github.com/ovh/manager/issues/2930)) ([23d2df9](https://github.com/ovh/manager/commit/23d2df98596f58e46da593865d7bf6ea2f595a14))
+
+
+
+# [12.4.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@12.3.3...@ovh-ux/manager-dedicated@12.4.0) (2020-05-13)
+
+
+### Bug Fixes
+
+* **billing:** display pay as you go section ([#2880](https://github.com/ovh/manager/issues/2880)) ([8cda425](https://github.com/ovh/manager/commit/8cda4253003a7cda303ec1be39273ff539e03fc6))
+* **i18n:** add missing translations [CDS 383] ([a784a99](https://github.com/ovh/manager/commit/a784a999d869e4b069b7d56f33bb53048fa06bc8))
+
+
+### Features
+
+* **dedicated.cloud:** add veeam backup storage ([#2320](https://github.com/ovh/manager/issues/2320)) ([61f53d4](https://github.com/ovh/manager/commit/61f53d4b6507158941a76defbc72b7302a4206f3))
+
+
+
 ## [12.3.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-dedicated@12.3.2...@ovh-ux/manager-dedicated@12.3.3) (2020-04-28)
 
 
