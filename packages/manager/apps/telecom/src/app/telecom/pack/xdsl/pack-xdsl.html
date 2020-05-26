@@ -5,24 +5,24 @@
 
     <div class="telecom-section-header" data-ng-if="!$ctrl.loading.init">
         <header class="oui-page-header">
-          <div class="oui-page-header__container">
-            <div class="oui-page-header__content">
-              <oui-back-button
-                data-on-click="::$ctrl.goBack($ctrl.content.back.state)"
-                data-ng-if="$ctrl.content.back.state && $ctrl.content.status === 'active'"
-              >
-                <span
-                  data-ng-bind="$ctrl.pack.general.description || $ctrl.pack.general.packName || $ctrl.access.description || $ctrl.access.accessName"
-                ></span>
-              </oui-back-button>
+            <div class="oui-page-header__container">
+                <div class="oui-page-header__content">
+                    <oui-back-button
+                        data-on-click="::$ctrl.goBack($ctrl.content.back.state)"
+                        data-ng-if="$ctrl.content.back.state && $ctrl.content.status === 'active'"
+                    >
+                        <span
+                            data-ng-bind="$ctrl.pack.general.description || $ctrl.pack.general.packName || $ctrl.access.description || $ctrl.access.accessName"
+                        ></span>
+                    </oui-back-button>
 
-              <tuc-editable-service-name
-                data-tuc-editable-service-name-title="$ctrl.access.description || $ctrl.access.accessName"
-                data-tuc-editable-service-name-service-name="$ctrl.access.accessName"
-                data-tuc-editable-service-name-title-on-save="$ctrl.accessDescriptionSave"
-              ></tuc-editable-service-name>
+                    <tuc-editable-service-name
+                        data-tuc-editable-service-name-title="$ctrl.access.description || $ctrl.access.accessName"
+                        data-tuc-editable-service-name-service-name="$ctrl.access.accessName"
+                        data-tuc-editable-service-name-title-on-save="$ctrl.accessDescriptionSave"
+                    ></tuc-editable-service-name>
+                </div>
             </div>
-          </div>
         </header>
 
         <nav role="navigation">
