@@ -8,9 +8,10 @@ import { MAX_QUANTITY } from './accessories-choice.constant';
 
 export default class TelecomTelephonyLinePhoneAccessoriesChoiceCtrl {
   /* @ngInject */
-  constructor($q, $translate, TucTelephonyAccessoriesOrderProcess) {
+  constructor($q, $translate, atInternet, TucTelephonyAccessoriesOrderProcess) {
     this.$q = $q;
     this.$translate = $translate;
+    this.atInternet = atInternet;
     this.TucTelephonyAccessoriesOrderProcess = TucTelephonyAccessoriesOrderProcess;
   }
 
@@ -115,6 +116,11 @@ export default class TelecomTelephonyLinePhoneAccessoriesChoiceCtrl {
 
   validateStep() {
     this.process.currentView = 'shipping';
+    this.atInternet.trackClick({
+      name:
+        'telecom::telephony::billingAccount::line::phone::accessories::validate',
+      type: 'action',
+    });
   }
 
   sortPrice(order) {

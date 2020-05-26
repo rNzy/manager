@@ -95,6 +95,7 @@ angular.module('managerApp').controller(
             : this.$translate.instant(
                 'telephony_line_phone_actions_line_phone_order_phone',
               ),
+          tracking: 'telecom::telephony::billingAccount::line::phone::order',
         },
         {
           name: 'line_order_accessories',
@@ -106,6 +107,8 @@ angular.module('managerApp').controller(
           text: this.$translate.instant(
             'telephony_line_phone_actions_line_order_accessories',
           ),
+          tracking:
+            'telecom::telephony::billingAccount::line::phone::accessories',
         },
         {
           name: 'line_phonebook',
@@ -131,6 +134,8 @@ angular.module('managerApp').controller(
               : this.$translate.instant(
                   'telephony_line_phone_actions_line_phone_order_attach',
                 ),
+          tracking:
+            'telecom::telephony::billingAccount::line::phone::equipment',
         },
       ];
     }
