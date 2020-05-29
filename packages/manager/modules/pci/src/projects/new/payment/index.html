@@ -80,11 +80,13 @@
                     data-type="submit"
                     data-variant-nav="next"
                     data-disabled="
-                        ($ctrl.eligibility.isChallengePaymentMethodRequired() && !$ctrl.model.challenge.isValid($ctrl.defaultPaymentMethod.paymentType)
+                        $ctrl.eligibility.isChallengePaymentMethodRequired() && !$ctrl.model.challenge.isValid($ctrl.defaultPaymentMethod.paymentType)
                         || (!$ctrl.model.paymentMethod && $ctrl.eligibility.isAddPaymentMethodRequired())
+                        || (!$ctrl.model.defaultPaymentMethod && $ctrl.eligibility.isDefaultPaymentMethodChoiceRequired())
                         || $ctrl.model.challenge.checking
-                        || $ctrl.globalLoading.finalize)"
-                    data-ng-if="$ctrl.defaultPaymentMethod || !$ctrl.model.paymentMethod"
+                        || $ctrl.globalLoading.finalize
+                        || $ctrl.globalLoading.setDefaultPaymentMehtod"
+                    data-ng-if="$ctrl.defaultPaymentMethod || !$ctrl.model.paymentMethod || ($ctrl.eligibility.isDefaultPaymentMethodChoiceRequired() && !$ctrl.model.paymentMethod)"
                 >
                     <span
                         data-translate="pci_project_new_payment_btn_continue_default"

@@ -112,6 +112,7 @@ export default class PciProjectNewPaymentCtrl {
 
   onPaymentFormSubmit() {
     let challengePromise = Promise.resolve(true);
+    let defaultPaymentMethodPromise = Promise.resolve(true);
 
     // call integration submit function if some
     if (
@@ -153,9 +154,26 @@ export default class PciProjectNewPaymentCtrl {
         });
     }
 
-    return challengePromise.then(() => {
-      return !this.model.challenge.error ? this.manageProjectCreation() : null;
-    });
+    if (
+      this.eligibility.isDefaultPaymentMethodChoiceRequired() &&
+      this.model.defaultPaymentMethod
+    ) {
+      this.globalLoading.setDefaultPaymentMehtod = true;
+
+      defaultPaymentMethodPromise = this.ovhPaymentMethod
+        .setPaymentMethodAsDefault(this.model.defaultPaymentMethod)
+        .finally(() => {
+          this.globalLoading.setDefaultPaymentMehtod = false;
+        });
+    }
+
+    return Promise.all([challengePromise, defaultPaymentMethodPromise]).then(
+      () => {
+        return !this.model.challenge.error
+          ? this.manageProjectCreation()
+          : null;
+      },
+    );
   }
 
   /* -----  End of Events  ------ */
