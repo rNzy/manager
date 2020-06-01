@@ -3,7 +3,7 @@ export default /* @ngInject */ function(
   $q,
   $stateParams,
   PAGINATION_PER_PAGE,
-  OvhApiOverTheBox,
+  OvhApiOverTheBoxDevice,
   TucToast,
 ) {
   const self = this;
@@ -25,7 +25,7 @@ export default /* @ngInject */ function(
   self.getActions = function getActions() {
     self.isLoading = true;
     self.actionIds = [];
-    OvhApiOverTheBox.v6()
+    OvhApiOverTheBoxDevice.v6()
       .getActions({ serviceName: $stateParams.serviceName })
       .$promise.then((actionIds) => {
         self.actionIds = actionIds.map((actionId) => ({ id: actionId }));
@@ -44,7 +44,7 @@ export default /* @ngInject */ function(
 
   self.transformItem = function transformItem(row) {
     self.isLoading = true;
-    return OvhApiOverTheBox.v6()
+    return OvhApiOverTheBoxDevice.v6()
       .getAction({ serviceName: $stateParams.serviceName, actionId: row.id })
       .$promise.then((action) => action)
       .catch((error) => {
