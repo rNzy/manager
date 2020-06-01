@@ -6,11 +6,13 @@ import forEach from 'lodash/forEach';
 
 export default class FlavorsListController {
   /* @ngInject */
-  constructor(PciProjectFlavors) {
+  constructor($state, PciProjectFlavors) {
+    this.$state = $state;
     this.PciProjectFlavors = PciProjectFlavors;
   }
 
   $onInit() {
+    this.quotaUrl = this.$state.href('pci.projects.project.quota');
     this.isLoading = true;
 
     return this.getFlavors().finally(() => {

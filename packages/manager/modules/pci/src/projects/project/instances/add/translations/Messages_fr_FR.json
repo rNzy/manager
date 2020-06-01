@@ -1,5 +1,4 @@
 {
-
   "pci_projects_project_instances_add_title": "Créer une instance",
 
   "pci_projects_project_instances_add_flavor_title": "Sélectionnez un modèle",
@@ -8,7 +7,7 @@
   "pci_projects_project_instances_add_region_datacenter_title": "Région",
   "pci_project_instances_instance_add_region_error": "Une erreur est survenue lors de la récupération des régions disponibles",
   "pci_project_instances_instance_add_region_activate": "Activer cette région",
-  "pci_project_instances_instance_add_region_quota": "Augmenter mon quota",
+  "pci_project_instances_instance_add_region_quota": "Le quota de votre projet ne vous permet pas d’ajouter ce type de machine dans cette région. <a class=\"oui-link\" href=\"{{ quotaUrl }}\">Gérer mon quota</a>",
   "pci_project_instances_instance_add_region_unavailable": "Disponible pour un autre modèle",
   "pci_project_instances_instance_add_region_bandwidth_extra": "Le trafic réseau public sortant des instances est inclus dans le prix des instances sur toutes les localisations, excepté la région Asie-Pacifique (Singapour et Sydney). Sur ces deux régions, 1 To/mois de trafic public sortant est inclus pour chaque projet Public Cloud. Au-delà de ce quota, chaque Go de trafic supplémentaire est facturé {{ price }}. Le trafic réseau entrant depuis le réseau public est inclus dans tous les cas et dans toutes les régions.",
 
@@ -33,7 +32,6 @@
 
   "pci_projects_project_instances_add_automated_backup_label": "Sauvegarde automatisée des instances",
   "pci_projects_project_instances_add_automated_backup_infos": "Cette fonctionnalité vous permet de sauvegarder votre instance de manière automatique selon l'ordonnancement de votre choix.",
-
 
   "pci_projects_project_instances_add_billing_title": "Sélectionnez une période de facturation",
   "pci_projects_project_instances_add_billing_montly_discount_message": "Le forfait mensuel est facturé dès le démarrage de l'instance et permet d'économiser 50% sur le prix des serveurs.",
