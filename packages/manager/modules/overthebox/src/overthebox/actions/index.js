@@ -9,7 +9,7 @@ import routing from './overTheBox-actions.routing';
 const moduleName = 'ovhManagerOtbActions';
 
 angular
-  .module(moduleName, [ngTranslateAsyncLoader, uiRouter])
+  .module(moduleName, [ngTranslateAsyncLoader, uiRouter, 'ovh-api-services'])
   .component('overTheBoxActions', component)
   .config(routing)
   .run(/* @ngTranslationsInject:json ./translations */);
