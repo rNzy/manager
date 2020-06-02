@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@1.1.1...@ovh-ux/manager-hub@1.1.2) (2020-06-02)
+
+
+### Bug Fixes
+
+* fix styles to match ui specs ([43132ff](https://github.com/ovh/manager/commit/43132ff4d6b32375deeb779621740b04cafb67c2))
+
+
+
 ## [1.1.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-hub@1.1.0...@ovh-ux/manager-hub@1.1.1) (2020-05-13)
 
 
@@ -129,7 +138,6 @@
 
 * create stable version for hub
 
-Signed-off-by: Marie JONES <marie.jones@corp.ovh.com>
 * **hub:** init @ovh-ux/manager-account-sidebar module
 
 
