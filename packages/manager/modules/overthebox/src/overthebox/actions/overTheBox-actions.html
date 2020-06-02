@@ -1,6 +1,8 @@
 <div class="telecom-overTheBox-actions">
     <div class="telecom-section-content">
-        <tuc-toast-message></tuc-toast-message>
+        <oui-message type="error" dismissable data-ng-if="$ctrl.isError">
+            <span data-ng-bind="$ctrl.errorMessage"></span>
+        </oui-message>
 
         <div class="widget-presentation">
             <h2

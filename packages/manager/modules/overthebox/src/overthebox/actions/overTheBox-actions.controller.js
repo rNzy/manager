@@ -1,61 +1,71 @@
-export default /* @ngInject */ function(
-  $translate,
-  $q,
-  $stateParams,
-  PAGINATION_PER_PAGE,
-  OvhApiOverTheBoxDevice,
-  TucToast,
-) {
-  const self = this;
+export default class OverTheBoxActionsCtrl {
+  /* @ngInject */
 
-  self.loaders = {
-    init: true,
-  };
+  constructor(
+    $translate,
+    $q,
+    $stateParams,
+    PAGINATION_PER_PAGE,
+    OvhApiOverTheBoxDevice,
+  ) {
+    this.$translate = $translate;
+    this.$q = $q;
+    this.$stateParams = $stateParams;
+    this.PAGINATION_PER_PAGE = PAGINATION_PER_PAGE;
+    this.OvhApiOverTheBoxDevice = OvhApiOverTheBoxDevice;
+  }
 
-  self.actionIds = [];
-  self.serviceName = $stateParams.serviceName;
-  self.filter = {
-    perPage: PAGINATION_PER_PAGE,
-  };
+  $onInit() {
+    this.loaders = {
+      init: true,
+    };
 
-  self.$onInit = function $onInit() {
-    $q.all([self.getActions()]);
-  };
+    this.actionIds = [];
+    this.serviceName = this.$stateParams.serviceName;
+    this.filter = {
+      perPage: this.PAGINATION_PER_PAGE,
+    };
+    this.isError = false;
 
-  self.getActions = function getActions() {
-    self.isLoading = true;
-    self.actionIds = [];
-    OvhApiOverTheBoxDevice.v6()
-      .getActions({ serviceName: $stateParams.serviceName })
+    this.$q.all([this.getActions()]);
+  }
+
+  getActions() {
+    this.isLoading = true;
+    this.actionIds = [];
+    this.isError = false;
+    this.OvhApiOverTheBoxDevice.v6()
+      .getActions({ serviceName: this.serviceName })
       .$promise.then((actionIds) => {
-        self.actionIds = actionIds.map((actionId) => ({ id: actionId }));
+        this.actionIds = actionIds.map((actionId) => ({ id: actionId }));
       })
       .catch((error) => {
-        TucToast.error(
-          [$translate.instant('an_error_occured'), error.data.message].join(
-            ' ',
-          ),
-        );
+        this.isError = true;
+        this.errorMessage = [
+          this.$translate.instant('an_error_occured'),
+          error.data.message,
+        ].join(' ');
       })
       .finally(() => {
-        self.isLoading = false;
+        this.isLoading = false;
       });
-  };
+  }
 
-  self.transformItem = function transformItem(row) {
-    self.isLoading = true;
-    return OvhApiOverTheBoxDevice.v6()
-      .getAction({ serviceName: $stateParams.serviceName, actionId: row.id })
+  transformItem(row) {
+    this.isLoading = true;
+    this.isError = false;
+    return this.OvhApiOverTheBoxDevice.v6()
+      .getAction({ serviceName: this.serviceName, actionId: row.id })
       .$promise.then((action) => action)
       .catch((error) => {
-        TucToast.error(
-          [$translate.instant('an_error_occured'), error.data.message].join(
-            ' ',
-          ),
-        );
+        this.isError = true;
+        this.errorMessage = [
+          this.$translate.instant('an_error_occured'),
+          error.data.message,
+        ].join(' ');
       })
       .finally(() => {
-        self.isLoading = false;
+        this.isLoading = false;
       });
-  };
+  }
 }
