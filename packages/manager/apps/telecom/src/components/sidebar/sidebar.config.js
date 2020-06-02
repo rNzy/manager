@@ -104,7 +104,10 @@ angular
         }
 
         // add sidebar SMS item
-        if (featuresAvailabilities.isFeatureAvailable('sms') || beta) {
+        if (
+          featuresAvailabilities.isFeatureAvailable('sms') &&
+          get(count, 'sms', beta)
+        ) {
           SmsSidebar.init(beta);
         }
 
