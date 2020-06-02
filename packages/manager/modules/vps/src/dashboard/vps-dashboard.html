@@ -10,7 +10,10 @@
         data-translate="vps_dashboard_migration_link"
     ></button>
 </oui-message>
-<oui-message data-ng-if="$ctrl.vpsMigrationTask" data-type="warning">
+<oui-message
+    data-ng-if="$ctrl.vpsMigrationTask && $ctrl.vps2014MigrationData.inAutoMigrationPhase"
+    data-type="warning"
+>
     <p
         data-ng-if="$ctrl.vpsMigrationTask.state === 'todo'"
         data-translate="vps_dashboard_auto_migration_warning"
@@ -97,7 +100,7 @@
                 </div>
                 <div
                     class="oui-tile__item oui-tile__item_button"
-                    data-ng-if="$ctrl.hasFeature($ctrl.DASHBOARD_FEATURES.upgrade) && $ctrl.actions.upgrade.state"
+                    data-ng-if="$ctrl.hasFeature($ctrl.DASHBOARD_FEATURES.upgrade) && $ctrl.actions.upgrade.state && $ctrl.actions.upgrade.isAvailable()"
                 >
                     <a
                         class="oui-tile__button oui-button oui-link_icon oui-button_link oui-button_full-width"

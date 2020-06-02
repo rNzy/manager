@@ -22,7 +22,12 @@ export default class VpsTaskService {
       this.startTaskPolling(
         serviceName,
         containerName,
-        filter(tasks, (task) => task.type !== 'upgradeVm'),
+        filter(
+          tasks,
+          (task) =>
+            task.type !== 'upgradeVm' &&
+            (task.type !== 'migrate' || task.state !== 'todo'),
+        ),
       ),
     );
   }
