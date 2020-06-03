@@ -33,6 +33,11 @@ export const AT_INTERNET_CUSTOM_VARS = {
     path: 'site.6', // OVH's AtInternet configuration
     format: '[%s]',
   },
+
+  siteName: {
+    path: 'site.13', // OVH's AtInternet configuration
+    format: '[%s]',
+  },
 };
 
 export default {
