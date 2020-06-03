@@ -153,7 +153,7 @@ export default /* @ngInject */ ($stateProvider) => {
       },
 
       globalLoading: () => ({
-        setDefaultPaymentMehtod: false,
+        setDefaultPaymentMethod: false,
         finalize: false,
       }),
 

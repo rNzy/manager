@@ -158,12 +158,12 @@ export default class PciProjectNewPaymentCtrl {
       this.eligibility.isDefaultPaymentMethodChoiceRequired() &&
       this.model.defaultPaymentMethod
     ) {
-      this.globalLoading.setDefaultPaymentMehtod = true;
+      this.globalLoading.setDefaultPaymentMethod = true;
 
       defaultPaymentMethodPromise = this.ovhPaymentMethod
         .setPaymentMethodAsDefault(this.model.defaultPaymentMethod)
         .finally(() => {
-          this.globalLoading.setDefaultPaymentMehtod = false;
+          this.globalLoading.setDefaultPaymentMethod = false;
         });
     }
 
