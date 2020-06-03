@@ -29,52 +29,85 @@ const deferredApplication = new Promise((resolve) => {
   });
 });
 
-/**
- * Construct micro application URL
- */
-const uappURL =
-  __DEV_ROOT__ === 'undefined'
-    ? new URL(`${window.location.origin}${__APP_ROOT__}`)
-    : new URL(__DEV_ROOT__);
+const appRootRegExp = /^#!?(\/[^/]+)/; // #/foo/bar/baz => /foo
+const appHashRegExp = /^#!?\/[^/]+(.*)/; // #/foo/bar/baz => /bar/baz
 
-uappURL.hash =
-  __DEV_ROOT__ === 'undefined' ? window.location.hash : uappURL.hash;
+function switchApp() {
+  const { location } = window;
+  const iframeURL = new URL(location);
+  const [, appRoot] = location.hash.match(appRootRegExp) || [null, ''];
+  const [, appHash] = location.hash.match(appHashRegExp) || [null, ''];
 
-/**
- * Initialize the micro-application iframe
- */
-const handshake = new Postmate({
-  container: document.getElementsByClassName('hub-main-view')[0],
-  url: uappURL.href,
-  name: 'manager',
-  classListArray: ['w-100', 'h-100', 'd-block', 'border-0'],
-});
+  iframeURL.hash = `${appHash}`;
 
-/**
- * Once iframe is ready, implements callbacks for micro-application events
- */
-handshake.then((child) => {
-  window.addEventListener('hashchange', () => {
-    child.call('updateHash', window.location.hash);
+  if (location.hostname === 'localhost') {
+    // in developement, app are hosted locally on different port
+    iframeURL.port = 9000;
+  } else {
+    // in production, apps are hosted on separate paths
+    iframeURL.pathname = `${appRoot}/`;
+  }
+
+  const handshake = new Postmate({
+    container: document.getElementsByClassName('hub-main-view')[0],
+    url: iframeURL,
+    name: 'manager',
+    classListArray: ['w-100', 'h-100', 'd-block', 'border-0'],
   });
 
-  child.on(messages.hashChange, (hash) => {
-    window.history.replaceState(null, '', hash);
+  handshake.then((child) => {
+    const onContainerHashChange = ({ oldURL, newURL }) => {
+      console.log(oldURL, newURL);
+      const from = new URL(oldURL);
+      const to = new URL(newURL);
+      const [, fromRoot] = from.hash.match(appRootRegExp) || [null, ''];
+      const [, toRoot] = to.hash.match(appRootRegExp) || [null, ''];
+      if (fromRoot !== toRoot) {
+        // app switching, unregister hooks and perform new handshake
+        window.removeEventListener('hashchange', onContainerHashChange);
+        child.destroy();
+        switchApp();
+      } else {
+        // forward path changes to the child
+        const [, hash] = to.hash.match(appHashRegExp) || [null, ''];
+        child.call('updateHash', `#${hash}`);
+      }
+    };
+
+    window.addEventListener('hashchange', onContainerHashChange);
+
+    child.on(messages.hashChange, (childHash) => {
+      // extract path from hash (remove hash prefix)
+      const hash = childHash.replace(/^#!?/, '');
+      // prepend root to path and update container url
+      window.history.replaceState(null, null, `#${appRoot}${hash}`);
+    });
+
+    child.on(messages.switchApp, (hash) => {
+      const oldURL = window.location.href;
+      window.history.pushState(null, null, `#${hash}`);
+      onContainerHashChange({
+        oldURL,
+        newURL: window.location.href,
+      });
+    });
+
+    child.on(messages.sessionSwitch, () =>
+      deferredApplication.then((app) =>
+        app.get('ssoAuthentication').handleSwitchSession(),
+      ),
+    );
+
+    child.on(messages.login, (loginURL) =>
+      deferredApplication.then((app) =>
+        app.get('ssoAuthentication').goToLoginPage(loginURL),
+      ),
+    );
+
+    child.on(messages.logout, () =>
+      deferredApplication.then((app) => app.get('ssoAuthentication').logout()),
+    );
   });
+}
 
-  child.on(messages.sessionSwitch, () =>
-    deferredApplication.then((app) =>
-      app.get('ssoAuthentication').handleSwitchSession(),
-    ),
-  );
-
-  child.on(messages.login, (url) =>
-    deferredApplication.then((app) =>
-      app.get('ssoAuthentication').goToLoginPage(url),
-    ),
-  );
-
-  child.on(messages.logout, () =>
-    deferredApplication.then((app) => app.get('ssoAuthentication').logout()),
-  );
-});
+switchApp();
