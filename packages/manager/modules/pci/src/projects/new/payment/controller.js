@@ -13,7 +13,6 @@ export default class PciProjectNewPaymentCtrl {
     pciProjectNew,
     ovhPaymentMethod,
     OVH_PAYMENT_METHOD_INTEGRATION_TYPE,
-    OVH_PAYMENT_METHOD_TYPE,
   ) {
     this.$translate = $translate;
     this.$q = $q;
@@ -22,7 +21,6 @@ export default class PciProjectNewPaymentCtrl {
     this.pciProjectNew = pciProjectNew;
     this.ovhPaymentMethod = ovhPaymentMethod;
     this.OVH_PAYMENT_METHOD_INTEGRATION_TYPE = OVH_PAYMENT_METHOD_INTEGRATION_TYPE;
-    this.OVH_PAYMENT_METHOD_TYPE = OVH_PAYMENT_METHOD_TYPE;
 
     // other attributes
     this.paymentMethodUrl = get(

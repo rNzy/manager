@@ -80,9 +80,11 @@
                     data-type="submit"
                     data-variant-nav="next"
                     data-disabled="
-                        $ctrl.eligibility.isChallengePaymentMethodRequired() && !$ctrl.model.challenge.isValid($ctrl.defaultPaymentMethod.paymentType)
+                        ($ctrl.eligibility.isChallengePaymentMethodRequired() && !$ctrl.model.challenge.isValid($ctrl.defaultPaymentMethod.paymentType))
                         || (!$ctrl.model.paymentMethod && $ctrl.eligibility.isAddPaymentMethodRequired())
-                        || (!$ctrl.model.defaultPaymentMethod && $ctrl.eligibility.isDefaultPaymentMethodChoiceRequired())
+                        || (!$ctrl.defaultPaymentMethod && 
+                            !$ctrl.model.defaultPaymentMethod && 
+                            $ctrl.eligibility.isDefaultPaymentMethodChoiceRequired())
                         || $ctrl.model.challenge.checking
                         || $ctrl.globalLoading.finalize
                         || $ctrl.globalLoading.setDefaultPaymentMethod"
@@ -95,7 +97,7 @@
 
                 <a
                     class="oui-button oui-button_primary oui-button_icon-right no-transition"
-                    data-ng-if="$ctrl.OVH_PAYMENT_METHOD_TYPE.BANK_ACCOUNT === $ctrl.model.paymentMethod.paymentType"
+                    data-ng-if="$ctrl.model.paymentMethod.isBankAccount()"
                     data-ng-href="{{ $ctrl.paymentMethodUrl }}"
                 >
                     <span

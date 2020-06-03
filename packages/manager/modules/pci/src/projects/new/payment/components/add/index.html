@@ -29,7 +29,7 @@
 
         <oui-message
             data-type="warning"
-            data-ng-if="$ctrl.model.paymentMethod.paymentType === 'BANK_ACCOUNT'"
+            data-ng-if="$ctrl.model.paymentMethod.isBankAccount()"
         >
             <span
                 data-translate="pci_project_new_payment_method_add_warning_bank_account"
