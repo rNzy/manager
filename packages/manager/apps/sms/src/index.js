@@ -10,4 +10,12 @@ import angular from 'angular';
 import ovhManagerSms from '@ovh-ux/manager-sms';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 
-angular.module('smsApp', [ngOvhApiWrappers, ngOvhUApp, ovhManagerSms]);
+angular
+  .module('smsApp', [ngOvhApiWrappers, ngOvhUApp, ovhManagerSms])
+  .config(
+    /* @ngInject */ ($locationProvider) => $locationProvider.hashPrefix(''),
+  )
+  .config(
+    /* @ngInject */ ($urlRouterProvider) =>
+      $urlRouterProvider.otherwise('/sms'),
+  );

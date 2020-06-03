@@ -80,8 +80,6 @@ module.exports = (env = {}) => {
           ? `'${process.env.NODE_ENV}'`
           : '"development"',
         __NG_APP_INJECTIONS__: getNgAppInjections(['EU', 'CA', 'US']),
-        __APP_ROOT__: `"${process.env.APP_ROOT}"`,
-        __DEV_ROOT__: `"${process.env.DEV_ROOT}"`,
       }),
     ],
   });

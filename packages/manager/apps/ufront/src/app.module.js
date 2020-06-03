@@ -37,6 +37,9 @@ angular
     ].filter(isString),
   )
   .controller('HubController', controller)
+  .config(
+    /* @ngInject */ ($locationProvider) => $locationProvider.hashPrefix(''),
+  )
   .run(
     /* @ngInject */ ($translate) => {
       let lang = $translate.use();
