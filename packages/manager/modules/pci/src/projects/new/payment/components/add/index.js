@@ -1,13 +1,18 @@
 import angular from 'angular';
 import '@ovh-ux/ng-translate-async-loader';
 import 'angular-translate';
+import 'ovh-ui-angular';
 
 import component from './component';
 
 const moduleName = 'pciProjectNewPaymentMethodAdd';
 
 angular
-  .module(moduleName, ['ngTranslateAsyncLoader', 'pascalprecht.translate'])
+  .module(moduleName, [
+    'oui',
+    'ngTranslateAsyncLoader',
+    'pascalprecht.translate',
+  ])
   .run(/* @ngTranslationsInject:json ./translations */)
   .component(component.name, component);
 
