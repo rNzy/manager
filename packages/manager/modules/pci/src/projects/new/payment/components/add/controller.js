@@ -65,9 +65,9 @@ export default class PciProjectNewPaymentMethodAddCtrl {
   ============================= */
 
   $onInit() {
-    let { paymentMethodsAuthorized } = this.eligibility;
-    paymentMethodsAuthorized = map(paymentMethodsAuthorized, (method) =>
-      snakeCase(method).toUpperCase(),
+    const paymentMethodsAuthorized = map(
+      this.eligibility.paymentMethodsAuthorized,
+      (method) => snakeCase(method).toUpperCase(),
     );
     const registerablePaymentMethods = filter(
       this.registerablePaymentMethods,

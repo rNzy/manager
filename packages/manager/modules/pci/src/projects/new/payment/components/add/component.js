@@ -7,8 +7,8 @@ export default {
   template,
   bindings: {
     eligibility: '<',
+    globalLoading: '<',
     model: '<',
     registerablePaymentMethods: '<',
-    globalLoading: '<',
   },
 };
