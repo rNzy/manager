@@ -1,16 +1,9 @@
 export default class OverTheBoxActionsCtrl {
   /* @ngInject */
 
-  constructor(
-    $translate,
-    $q,
-    $stateParams,
-    PAGINATION_PER_PAGE,
-    OvhApiOverTheBoxDevice,
-  ) {
+  constructor($translate, $q, PAGINATION_PER_PAGE, OvhApiOverTheBoxDevice) {
     this.$translate = $translate;
     this.$q = $q;
-    this.$stateParams = $stateParams;
     this.PAGINATION_PER_PAGE = PAGINATION_PER_PAGE;
     this.OvhApiOverTheBoxDevice = OvhApiOverTheBoxDevice;
   }
@@ -21,7 +14,6 @@ export default class OverTheBoxActionsCtrl {
     };
 
     this.actionIds = [];
-    this.serviceName = this.$stateParams.serviceName;
     this.filter = {
       perPage: this.PAGINATION_PER_PAGE,
     };
