@@ -111,6 +111,7 @@ export default class PciProjectNewPaymentCtrl {
   onPaymentFormSubmit() {
     let challengePromise = Promise.resolve(true);
     let defaultPaymentMethodPromise = Promise.resolve(true);
+    let setDefaultPaymentMethodInError = false;
 
     // call integration submit function if some
     if (
@@ -160,6 +161,18 @@ export default class PciProjectNewPaymentCtrl {
 
       defaultPaymentMethodPromise = this.ovhPaymentMethod
         .setPaymentMethodAsDefault(this.model.defaultPaymentMethod)
+        .catch(() => {
+          this.CucCloudMessage.error(
+            this.$translate.instant(
+              'pci_project_new_payment_set_default_payment_method_error',
+            ),
+            'pci.projects.new.payment',
+          );
+
+          setDefaultPaymentMethodInError = true;
+
+          return null;
+        })
         .finally(() => {
           this.globalLoading.setDefaultPaymentMethod = false;
         });
@@ -167,7 +180,7 @@ export default class PciProjectNewPaymentCtrl {
 
     return Promise.all([challengePromise, defaultPaymentMethodPromise]).then(
       () => {
-        return !this.model.challenge.error
+        return !this.model.challenge.error && !setDefaultPaymentMethodInError
           ? this.manageProjectCreation()
           : null;
       },
