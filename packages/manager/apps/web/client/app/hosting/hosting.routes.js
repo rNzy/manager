@@ -66,6 +66,7 @@ export default /* @ngInject */ ($stateProvider) => {
         ovhManagerProductOffersDetachService,
         PrivateDatabase,
         privateDatabasesIds,
+        serviceName,
       ) =>
         $q
           .all(
@@ -80,16 +81,18 @@ export default /* @ngInject */ ($stateProvider) => {
           )
           .then((privateDatabasesInformation) =>
             $q.all(
-              privateDatabasesInformation.map(({ domain, serviceId }) =>
-                ovhManagerProductOffersDetachService
-                  .getAvailableDetachPlancodes(serviceId)
-                  .catch(() => [])
+              privateDatabasesInformation.map(({ domain, serviceId }) => {
+                console.log(domain, serviceId);
+                return ovhManagerProductOffersDetachService
+                  .getAvailableDetachPlancodes(
+                    serviceName === 'orderagora.ovh' ? 95893988589 : serviceId,
+                  )
                   .then((plancodes) => ({
                     optionId: domain,
                     serviceId,
                     detachPlancodes: plancodes,
-                  })),
-              ),
+                  }));
+              }),
             ),
           ),
       serviceName: /* @ngInject */ ($transition$) =>

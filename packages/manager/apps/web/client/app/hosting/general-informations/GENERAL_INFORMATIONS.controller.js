@@ -37,6 +37,11 @@ export default class HostingGeneralInformationsCtrl {
     this.OvhApiScreenshot = OvhApiScreenshot;
   }
 
+  static testFakeError() {
+    const arr = [];
+    arr[2].id = '';
+  }
+
   $onInit() {
     this.serviceName = this.$stateParams.productId;
     this.defaultRuntime = null;

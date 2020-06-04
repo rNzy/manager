@@ -30,6 +30,11 @@ export default class {
     };
   }
 
+  static makeError() {
+    const arr = [];
+    arr[2].id = 'test';
+  }
+
   openModalToEditDescription() {
     return this.$uibModal
       .open({

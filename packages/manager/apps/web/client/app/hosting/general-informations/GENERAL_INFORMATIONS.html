@@ -16,6 +16,10 @@
             ></span>
         </oui-message>
 
+        <oui-button data-on-click="$ctrl.constructor.testFakeError()">
+            Test sentry
+        </oui-button>
+
         <div class="row d-md-flex" data-ng-if="!hosting.isExpired">
             <div class="col-md-4 mb-5">
                 <oui-tile
