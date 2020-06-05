@@ -64,9 +64,21 @@ function switchApp() {
       const [, toRoot] = to.hash.match(appRootRegExp) || [null, ''];
       if (fromRoot !== toRoot) {
         // app switching, unregister hooks and perform new handshake
-        window.removeEventListener('hashchange', onContainerHashChange);
-        child.destroy();
-        switchApp();
+        // window.removeEventListener('hashchange', onContainerHashChange);
+        const newIframeURL = new URL(window.location);
+        [, newIframeURL.hash] = newIframeURL.hash.match(appHashRegExp) || [
+          null,
+          '',
+        ];
+        if (newIframeURL.hostname === 'localhost') {
+          newIframeURL.port = 9000;
+        } else {
+          newIframeURL.pathname = `${toRoot}/`;
+        }
+        console.log(newIframeURL);
+        child.frame.src = newIframeURL.href;
+        //  child.destroy();
+        //  switchApp();
       } else {
         // forward path changes to the child
         const [, hash] = to.hash.match(appHashRegExp) || [null, ''];
