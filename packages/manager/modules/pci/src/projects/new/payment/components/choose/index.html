@@ -21,38 +21,53 @@
                             class="oui-list__item"
                             data-ng-repeat="paymentMethod in $ctrl.validPaymentMethods track by $index"
                         >
-                            <oui-radio
-                                data-name="chooseDefault"
-                                data-model="$ctrl.model.defaultPaymentMethod"
-                                data-value="paymentMethod"
-                                data-thumbnail
-                                data-variant="light"
-                                data-on-change="$ctrl.onChooseDefaultPaymentMethodChange()"
-                                data-description="{{ $ctrl.model.defaultPaymentMethod.paymentMethodId === paymentMethod.paymentMethodId ? ('pci_project_new_payment_choose_payment_method_selected' | translate) : '' }}"
-                            >
-                                <span
-                                    class="d-inline-block align-center payment-method-image-container"
+                            <div class="oui-radio oui-radio_thumbnail-light">
+                                <input
+                                    class="oui-radio__input"
+                                    type="radio"
+                                    name="chooseDefault"
+                                    data-ng-attr-id="{{ 'paymentMethod-' + paymentMethod.paymentMethodId }}"
+                                    data-ng-value="paymentMethod"
+                                    data-ng-model="$ctrl.model.defaultPaymentMethod"
+                                    data-ng-change="$ctrl.onChooseDefaultPaymentMethodChange()"
+                                />
+                                <label
+                                    class="oui-radio__label-container"
+                                    data-ng-attr-for="{{ 'paymentMethod-' + paymentMethod.paymentMethodId }}"
                                 >
-                                    <img
-                                        data-ng-attr-src="{{ paymentMethod.icon.data }}"
-                                        data-ng-attr-alt="{{ paymentMethod.icon.name }}"
-                                        alt=""
-                                    />
-                                </span>
+                                    <span class="oui-radio__label">
+                                        <span
+                                            class="d-inline-block align-center payment-method-image-container"
+                                        >
+                                            <img
+                                                data-ng-attr-src="{{ paymentMethod.icon.data }}"
+                                                data-ng-attr-alt="{{ paymentMethod.icon.name }}"
+                                                alt=""
+                                            />
+                                        </span>
 
-                                <span
-                                    data-ng-bind="paymentMethod.label"
-                                    class="mr-auto"
-                                >
-                                </span>
+                                        <span
+                                            data-ng-bind="paymentMethod.label"
+                                            class="mr-auto"
+                                        >
+                                        </span>
 
-                                <span
-                                    data-ng-if="paymentMethod.experationDate"
-                                    data-translate="pci_project_new_payment_choose_payment_method_expiration"
-                                    data-translate-values="{ date: (paymentMethod.experationDate | date:'shortDate') }"
-                                >
-                                </span>
-                            </oui-radio>
+                                        <span
+                                            data-ng-if="paymentMethod.experationDate"
+                                            data-translate="pci_project_new_payment_choose_payment_method_expiration"
+                                            data-translate-values="{ date: (paymentMethod.experationDate | date:'shortDate') }"
+                                        >
+                                        </span>
+                                    </span>
+                                    <span
+                                        class="oui-radio__description"
+                                        data-ng-if="$ctrl.model.defaultPaymentMethod.paymentMethodId === paymentMethod.paymentMethodId"
+                                        data-translate="pci_project_new_payment_choose_payment_method_selected"
+                                        data-translate-values="{ url: $ctrl.myServiceUrl }"
+                                    >
+                                    </span>
+                                </label>
+                            </div>
                         </li>
                     </ul>
                 </div>

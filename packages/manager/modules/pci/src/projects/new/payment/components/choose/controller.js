@@ -1,6 +1,8 @@
 export default class PciProjectNewPaymentChooseCtrl {
-  constructor() {
+  /* @ngInject */
+  constructor(RedirectionService) {
     this.useNewPaymentMethod = false;
+    this.myServiceUrl = RedirectionService.getURL('services');
   }
 
   /*= =============================
