@@ -17,9 +17,15 @@ function bindOnce() {
       window.addEventListener('hashchange', ({ newURL }) => {
         const url = new URL(newURL);
         if (/^#!?\/go/.test(url.hash)) {
-          parent.emit(messages.switchApp, url.hash.match(/^#!?\/go(.*)/)[1]);
+          parent.emit(messages.switchApp, {
+            hash: url.hash.match(/^#!?\/go(.*)/)[1],
+            url: url.href,
+          });
         } else {
-          parent.emit(messages.hashChange, window.location.hash);
+          parent.emit(messages.hashChange, {
+            hash: window.location.hash,
+            url: url.href,
+          });
         }
       });
     });

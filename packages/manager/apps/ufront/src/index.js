@@ -32,51 +32,69 @@ const deferredApplication = new Promise((resolve) => {
 const appRootRegExp = /^#!?(\/[^/]+)/; // #/foo/bar/baz => /foo
 const appHashRegExp = /^#!?\/[^/]+(.*)/; // #/foo/bar/baz => /bar/baz
 
-function switchApp() {
+function buildIframeURL(root, hash) {
   const { location } = window;
   const iframeURL = new URL(location);
-  const [, appRoot] = location.hash.match(appRootRegExp) || [null, ''];
-  const [, appHash] = location.hash.match(appHashRegExp) || [null, ''];
-
-  iframeURL.hash = `${appHash}`;
-
+  iframeURL.hash = `${hash}`;
   if (location.hostname === 'localhost') {
     // in developement, app are hosted locally on different port
     iframeURL.port = 9000;
   } else {
     // in production, apps are hosted on separate paths
-    iframeURL.pathname = `${appRoot}/`;
+    iframeURL.pathname = `${root}/`;
   }
+  return iframeURL;
+}
+
+function switchApp() {
+  const { location } = window;
+  // const iframeURL = new URL(location);
+  const [, appRoot] = location.hash.match(appRootRegExp) || [null, ''];
+  const [, appHash] = location.hash.match(appHashRegExp) || [null, ''];
+
+  // iframeURL.hash = `${appHash}`;
+
+  // if (location.hostname === 'localhost') {
+  //   // in developement, app are hosted locally on different port
+  //   iframeURL.port = 9000;
+  // } else {
+  //   // in production, apps are hosted on separate paths
+  //   iframeURL.pathname = `${appRoot}/`;
+  // }
 
   const handshake = new Postmate({
     container: document.getElementsByClassName('hub-main-view')[0],
-    url: iframeURL,
+    url: buildIframeURL(appRoot, appHash),
     name: 'manager',
     classListArray: ['w-100', 'h-100', 'd-block', 'border-0'],
   });
 
   handshake.then((child) => {
     const onContainerHashChange = ({ oldURL, newURL }) => {
-      console.log(oldURL, newURL);
       const from = new URL(oldURL);
       const to = new URL(newURL);
       const [, fromRoot] = from.hash.match(appRootRegExp) || [null, ''];
       const [, toRoot] = to.hash.match(appRootRegExp) || [null, ''];
+      const [, toHash] = to.hash.match(appHashRegExp) || [null, ''];
       if (fromRoot !== toRoot) {
         // app switching, unregister hooks and perform new handshake
         // window.removeEventListener('hashchange', onContainerHashChange);
-        const newIframeURL = new URL(window.location);
-        [, newIframeURL.hash] = newIframeURL.hash.match(appHashRegExp) || [
-          null,
-          '',
-        ];
-        if (newIframeURL.hostname === 'localhost') {
-          newIframeURL.port = 9000;
-        } else {
-          newIframeURL.pathname = `${toRoot}/`;
-        }
-        console.log(newIframeURL);
-        child.frame.src = newIframeURL.href;
+        //  const newIframeURL = new URL(window.location);
+        //  [, newIframeURL.hash] = newIframeURL.hash.match(appHashRegExp) || [
+        //    null,
+        //    '',
+        //  ];
+        //  if (newIframeURL.hostname === 'localhost') {
+        //    newIframeURL.port = 9000;
+        //  } else {
+        //    newIframeURL.pathname = `${toRoot}/`;
+        //  }
+        //  console.log(newIframeURL);
+        const { frame } = child;
+        const foo = buildIframeURL(toRoot, toHash);
+        frame.src = foo;
+        window.history.replaceState(null, null, `#${toRoot}${toHash}`);
+        console.log('replace state', `#${toRoot}${toHash}`);
         //  child.destroy();
         //  switchApp();
       } else {
@@ -88,20 +106,29 @@ function switchApp() {
 
     window.addEventListener('hashchange', onContainerHashChange);
 
-    child.on(messages.hashChange, (childHash) => {
+    child.on(messages.hashChange, ({ hash, url }) => {
+      const [, root] = location.hash.match(appRootRegExp) || [null, ''];
+      const [, childRoot] = new URL(url).hash.match(appRootRegExp) || [
+        null,
+        '',
+      ];
       // extract path from hash (remove hash prefix)
-      const hash = childHash.replace(/^#!?/, '');
+      const h = hash.replace(/^#!?/, '');
       // prepend root to path and update container url
-      window.history.replaceState(null, null, `#${appRoot}${hash}`);
+      if (root === childRoot) {
+        console.log('update hash from child', root, h);
+        window.history.replaceState(null, null, `#${root}${h}`);
+      }
     });
 
-    child.on(messages.switchApp, (hash) => {
-      const oldURL = window.location.href;
-      window.history.pushState(null, null, `#${hash}`);
-      onContainerHashChange({
-        oldURL,
-        newURL: window.location.href,
-      });
+    child.on(messages.switchApp, ({ hash, url }) => {
+      const oldURL = new URL(window.location);
+      // window.history.pushState(null, null, `#${hash}`);
+      const newURL = new URL(window.location);
+      newURL.hash = `#${hash}`;
+      console.log('u', url);
+      console.log('receive switch app', oldURL.href, newURL.href);
+      onContainerHashChange({ oldURL, newURL });
     });
 
     child.on(messages.sessionSwitch, () =>
