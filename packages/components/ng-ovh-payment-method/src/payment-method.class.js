@@ -1,4 +1,4 @@
-import isNull from 'lodash/isNull';
+import { isNull } from 'lodash-es';
 
 import OvhPaymentMethodType from './payment-method-type.class';
 

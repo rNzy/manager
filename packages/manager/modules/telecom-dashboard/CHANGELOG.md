@@ -1,3 +1,26 @@
+## [5.1.1](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom-dashboard@5.1.0...@ovh-ux/manager-telecom-dashboard@5.1.1) (2020-06-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependencies with latest version ([#3057](https://github.com/ovh/manager/issues/3057)) ([24d06ad](https://github.com/ovh/manager/commit/24d06addfaab0716e725242beae2d3d92feb8856))
+
+
+
+# [5.1.0](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom-dashboard@5.0.3...@ovh-ux/manager-telecom-dashboard@5.1.0) (2020-06-02)
+
+
+### Bug Fixes
+
+* remove ui consistency ([#3029](https://github.com/ovh/manager/issues/3029)) ([34be0be](https://github.com/ovh/manager/commit/34be0bea216d575254017265d5650dace12ae582))
+
+
+### Features
+
+* add ovhcloud light theme imports ([24d56fb](https://github.com/ovh/manager/commit/24d56fb62a949e01de5f9929c0fe53239c889a59))
+
+
+
 ## [5.0.3](https://github.com/ovh/manager/compare/@ovh-ux/manager-telecom-dashboard@5.0.2...@ovh-ux/manager-telecom-dashboard@5.0.3) (2020-03-04)
 
 
@@ -36,8 +59,6 @@
 ### BREAKING CHANGES
 
 * module is now named as `ngUiRouterTitle
-
-Signed-off-by: Antoine Leblanc <antoine.leblanc@corp.ovh.com>
 
 
 
