@@ -13775,10 +13775,10 @@ ovh-angular-responsive-tabs@^4.0.0:
   resolved "https://registry.yarnpkg.com/ovh-angular-responsive-tabs/-/ovh-angular-responsive-tabs-4.0.0.tgz#85b66d7032612c3ed1a14cb29f83d1331b50c1df"
   integrity sha1-hbZtcDJhLD7RoUyyn4PRMxtQwd8=
 
-ovh-api-services@^9.44.0:
-  version "9.44.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.44.0.tgz#f3c0b8ac479606c6abdd3e1b1c5a49659421d244"
-  integrity sha512-wuR2O2g5jGTT5BgMbAIT0stwIDNZd2CFv6M8oFWeycsrHPK62fo27BJnhDcECjg+bsDDmB1dXh4CVIDSJJWiTw==
+ovh-api-services@^9.44.1:
+  version "9.44.1"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-9.44.1.tgz#ad25cfcd075cf18e516714dee90d344f999dac17"
+  integrity sha512-uZizdsd3Btf/ZuiB3Xk3msVHELPHZ+BIMLH8HxkKuOKvJrzO0yMsTxYQd+RBAOjHpXvZGIpWtftFwTdZcazORg==
   dependencies:
     lodash "^4.17.15"
 
