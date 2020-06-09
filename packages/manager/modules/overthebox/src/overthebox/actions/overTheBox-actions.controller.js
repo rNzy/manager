@@ -1,6 +1,5 @@
 export default class OverTheBoxActionsCtrl {
   /* @ngInject */
-
   constructor($translate, $q, PAGINATION_PER_PAGE, OvhApiOverTheBoxDevice) {
     this.$translate = $translate;
     this.$q = $q;
@@ -19,7 +18,7 @@ export default class OverTheBoxActionsCtrl {
     };
     this.isError = false;
 
-    this.$q.all([this.getActions()]);
+    return this.getActions();
   }
 
   getActions() {
@@ -33,10 +32,9 @@ export default class OverTheBoxActionsCtrl {
       })
       .catch((error) => {
         this.isError = true;
-        this.errorMessage = [
-          this.$translate.instant('an_error_occured'),
-          error.data.message,
-        ].join(' ');
+        this.errorMessage = `${this.$translate.instant('an_error_occured')} ${
+          error.data.message
+        }`;
       })
       .finally(() => {
         this.isLoading = false;
@@ -51,10 +49,9 @@ export default class OverTheBoxActionsCtrl {
       .$promise.then((action) => action)
       .catch((error) => {
         this.isError = true;
-        this.errorMessage = [
-          this.$translate.instant('an_error_occured'),
-          error.data.message,
-        ].join(' ');
+        this.errorMessage = `${this.$translate.instant('an_error_occured')} ${
+          error.data.message
+        }`;
       })
       .finally(() => {
         this.isLoading = false;
