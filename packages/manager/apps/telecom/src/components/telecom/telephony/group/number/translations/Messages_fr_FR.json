@@ -1,5 +1,5 @@
 {
-  "telephony_number_incoming_calls": "Appels entrants",
+  "telephony_number_incoming_calls": "Appels reçus",
   "telephony_number_save_error": "Oups une erreur est survenue lors de la sauvegarde de la configuration de votre numéro.",
   "telephony_number_save_doing": "Modification en cours",
   "telephony_number_action_change_type": "Modifier le type de numéro",

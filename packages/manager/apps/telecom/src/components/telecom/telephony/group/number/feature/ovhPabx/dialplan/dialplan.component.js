@@ -1,6 +1,9 @@
+import controller from './dialplan.controller';
+import template from './dialplan.html';
+
+const componentName = 'dialplan';
+
 angular.module('managerApp').component('telephonyNumberOvhPabxDialplan', {
-  templateUrl:
-    'components/telecom/telephony/group/number/feature/ovhPabx/dialplan/telephony-group-number-feature-ovh-pabx-dialplan.html',
   bindings: {
     dialplan: '=telephonyNumberOvhPabxDialplan',
   },
@@ -8,5 +11,8 @@ angular.module('managerApp').component('telephonyNumberOvhPabxDialplan', {
     numberCtrl: '^^telephonyNumber',
     ovhPabxCtrl: '^^telephonyNumberOvhPabx',
   },
-  controller: 'telephonyNumberOvhPabxDialplanCtrl',
+  template,
+  controller,
 });
+
+export default componentName;

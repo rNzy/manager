@@ -1,8 +1,11 @@
+import controller from './dialplan-extension.controller';
+import template from './dialplan-extension.html';
+
+const componentName = 'diaplanExtension';
+
 angular
   .module('managerApp')
   .component('telephonyNumberOvhPabxDialplanExtension', {
-    templateUrl:
-      'components/telecom/telephony/group/number/feature/ovhPabx/dialplan/extension/telephony-group-number-feature-ovh-pabx-dialplan-extension.html',
     bindings: {
       extension: '=',
     },
@@ -11,5 +14,8 @@ angular
       ovhPabxCtrl: '^^telephonyNumberOvhPabx',
       dialplanCtrl: '^^telephonyNumberOvhPabxDialplan',
     },
-    controller: 'telephonyNumberOvhPabxDialplanExtensionCtrl',
+    controller,
+    template,
   });
+
+export default componentName;

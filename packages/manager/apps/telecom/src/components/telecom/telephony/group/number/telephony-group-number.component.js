@@ -1,3 +1,8 @@
+import controller from './telephony-group-number.controller';
+import template from './telephony-group-number.html';
+
+const componentName = 'telephonyNumber';
+
 angular.module('managerApp').run(($translate, asyncLoader) => {
   asyncLoader.addTranslations(
     import(`./translations/Messages_${$translate.use()}.json`)
@@ -8,12 +13,14 @@ angular.module('managerApp').run(($translate, asyncLoader) => {
   );
   $translate.refresh();
 });
+
 angular.module('managerApp').component('telephonyNumber', {
-  templateUrl:
-    'components/telecom/telephony/group/number/telephony-group-number.html',
   bindings: {
     number: '=telephonyNumber',
     featureActions: '=telephonyNumberFeatureActions',
   },
-  controller: 'TelephonyNumberCtrl',
+  template,
+  controller,
 });
+
+export default componentName;

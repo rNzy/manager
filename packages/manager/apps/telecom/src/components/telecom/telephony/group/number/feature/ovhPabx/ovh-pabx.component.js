@@ -1,3 +1,8 @@
+import controller from './ovh-pabx.controller';
+import template from './ovh-pabx.html';
+
+const componentName = 'ovhPabx';
+
 angular.module('managerApp').run(($translate, asyncLoader) => {
   asyncLoader.addTranslations(
     import(`./translations/Messages_${$translate.use()}.json`)
@@ -44,10 +49,11 @@ angular.module('managerApp').run(($translate, asyncLoader) => {
   $translate.refresh();
 });
 angular.module('managerApp').component('telephonyNumberOvhPabx', {
-  templateUrl:
-    'components/telecom/telephony/group/number/feature/ovhPabx/telephony-group-number-feature-ovh-pabx.html',
   require: {
     numberCtrl: '^^telephonyNumber',
   },
-  controller: 'TelephonyNumberOvhPabxCtrl',
+  template,
+  controller,
 });
+
+export default componentName;
