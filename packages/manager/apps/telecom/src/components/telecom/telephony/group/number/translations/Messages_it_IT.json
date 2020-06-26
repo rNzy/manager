@@ -4,6 +4,7 @@
   "telephony_number_save_doing": "Modifica in corso",
   "telephony_number_action_change_type": "Modifica il tipo di numero",
   "telephony_number_action_scheduler": "Gestisci fasce orarie eccezionali",
+  "telephony_number_action_layout": "Modifica la disposizione dal CCS (verticale / orrizontale)",
   "telephony_number_feature_redirect_to": "Reindirizza verso",
   "telephony_number_feature_redirect_add_conditions": "Aggiungi condizioni",
   "telephony_number_feature_redirect_not_set": "Nessuna destinazione selezionata.",

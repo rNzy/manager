@@ -34,6 +34,10 @@ export default class TelephonyNumberCtrl {
     this.saveFeature = angular.noop;
     this.jsPlumbInstance = null;
 
+    this.verticalLayout = true;
+
+    this.container = document.getElementsByClassName('group-number-container');
+
     return this.$q
       .all([this.getTranslations(), this.tucJsPlumbService.initJsPlumb()])
       .finally(() => {
@@ -81,5 +85,17 @@ export default class TelephonyNumberCtrl {
     return this.$translate.refresh().finally(() => {
       this.loading.translations = false;
     });
+  }
+
+  changeCcsLayout() {
+    if (this.verticalLayout) {
+      this.container[0].classList.add('horizontal-layout');
+      this.container[0].classList.remove('vertical-layout');
+      this.verticalLayout = false;
+    } else {
+      this.container[0].classList.remove('horizontal-layout');
+      this.container[0].classList.add('vertical-layout');
+      this.verticalLayout = true;
+    }
   }
 }

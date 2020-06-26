@@ -4,154 +4,162 @@
     data-ng-submit="$ctrl.saveNumber()"
     novalidate
 >
-    <div class="group-number" data-ng-if="!$ctrl.loading.init">
-        <!-- HEADER -->
-        <div class="number-header">
-            <!-- INCOMING CALL -->
-            <div class="group-number__step group-number__step--point">
-                <div class="group-number__title--container">
-                    <span
-                        class="oui-icon oui-icon-phone_concept group-number__title--icon"
-                        aria-hidden="true"
-                    ></span>
-                    <h2
-                        class="group-number__title"
-                        data-translate="telephony_number_incoming_calls"
-                    ></h2>
+    <div class="group-number-switch">
+        <span data-translate="telephony_number_action_layout"></span> :
+        <span class="oui-icon oui-icon-ellypsis-vertical_extra-thin"></span>
+        <oui-switch on-change="$ctrl.changeCcsLayout()"></oui-switch>
+        <span class="oui-icon oui-icon-ellypsis_extra-thin"></span>
+    </div>
+    <div class="group-number-container vertical-layout">
+        <div class="group-number" data-ng-if="!$ctrl.loading.init">
+            <!-- HEADER -->
+            <div class="number-header">
+                <!-- INCOMING CALL -->
+                <div class="group-number__step group-number__step--point">
+                    <div class="group-number__title--container">
+                        <span
+                            class="oui-icon oui-icon-phone_concept group-number__title--icon"
+                            aria-hidden="true"
+                        ></span>
+                        <h2
+                            class="group-number__title"
+                            data-translate="telephony_number_incoming_calls"
+                        ></h2>
+                    </div>
                 </div>
-            </div>
-            <!-- INCOMING CALL -->
+                <!-- INCOMING CALL -->
 
-            <!-- NUMBER DISPLAY -->
-            <div class="group-number__step group-number__step--point">
-                <div class="group-number__number">
-                    <div
-                        class="group-number__step-icon group-number__step-icon--basic"
-                    >
-                        <span
-                            class="ovh-font ovh-font-hashtag"
-                            aria-hidden="true"
-                        ></span>
-                    </div>
-                    <div class="group-number__step-description">
-                        <span
-                            class="group-number__step-name group-number__step-name--has-info"
-                            data-ng-bind="$ctrl.number.getDisplayedName()"
-                        >
-                        </span>
-                        <span
-                            class="group-number__step-info"
-                            data-ng-bind="$ctrl.number.serviceName | tucPhoneNumber"
-                        >
-                        </span>
-                    </div>
-                    <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
-                    <a
-                        data-ng-if="$ctrl.featureActions.length === 1"
-                        class="group-number__step-btn group-number__step-btn--primary"
-                        data-ui-sref="{{ $ctrl.featureActions[0].sref }}"
-                        data-ng-attr-title="{{ $ctrl.featureActions[0].text }}"
-                    >
-                        <span
-                            class="ovh-font ovh-font-editer"
-                            aria-hidden="true"
-                        ></span>
-                    </a>
-                    <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
-
-                    <!-- MORE ACTIONS -->
-                    <div
-                        class="group-number__number--btn-wrapper"
-                        data-ng-if="$ctrl.featureActions.length > 1"
-                        data-uib-dropdown
-                    >
-                        <button
-                            type="button"
-                            id="number-actions"
-                            class="group-number__step-btn group-number__number--btn"
-                            data-ng-disabled="$ctrl.number.inEdition"
-                            data-uib-dropdown-toggle
+                <!-- NUMBER DISPLAY -->
+                <div class="group-number__step group-number__step--point">
+                    <div class="group-number__number">
+                        <div
+                            class="group-number__step-icon group-number__step-icon--basic"
                         >
                             <span
-                                class="oui-icon oui-icon-hamburger_extra-thin group-number__number--btn-icon"
+                                class="ovh-font ovh-font-hashtag"
                                 aria-hidden="true"
                             ></span>
-                        </button>
-                        <ul
-                            class="dropdown-menu ovh-dropdown-menu group-number__number--dropdown"
-                            role="menu"
-                            data-aria-labelledby="number-actions"
-                            data-uib-dropdown-menu
-                        >
-                            <li
-                                role="menuitem"
-                                data-ng-class="{ divider: action.divider }"
-                                data-ng-repeat="action in $ctrl.featureActions track by $index"
+                        </div>
+                        <div class="group-number__step-description">
+                            <span
+                                class="group-number__step-name group-number__step-name--has-info"
+                                data-ng-bind="$ctrl.number.getDisplayedName()"
                             >
-                                <!-- ACTION WITH SREF -->
-                                <a
-                                    class="btn btn-link w-100"
-                                    data-ui-sref="{{ action.sref }}"
-                                    data-ng-if="action.sref"
-                                    data-ng-bind="action.text"
-                                >
-                                </a>
-                                <!-- END OF ACTION WITH SREF -->
+                            </span>
+                            <span
+                                class="group-number__step-info"
+                                data-ng-bind="$ctrl.number.serviceName | tucPhoneNumber"
+                            >
+                            </span>
+                        </div>
+                        <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
+                        <a
+                            data-ng-if="$ctrl.featureActions.length === 1"
+                            class="group-number__step-btn group-number__step-btn--primary"
+                            data-ui-sref="{{ $ctrl.featureActions[0].sref }}"
+                            data-ng-attr-title="{{ $ctrl.featureActions[0].text }}"
+                        >
+                            <span
+                                class="ovh-font ovh-font-editer"
+                                aria-hidden="true"
+                            ></span>
+                        </a>
+                        <!-- ONLY ONE ACTION => CHANGE FEATURE TYPE -->
 
-                                <!-- ACTION WITH URL -->
-                                <a
-                                    class="btn btn-link w-100"
-                                    data-ng-href="{{ action.url }}"
-                                    data-ng-if="action.url"
-                                    target="_blank"
-                                    rel="nofollow"
+                        <!-- MORE ACTIONS -->
+                        <div
+                            class="group-number__number--btn-wrapper"
+                            data-ng-if="$ctrl.featureActions.length > 1"
+                            data-uib-dropdown
+                        >
+                            <button
+                                type="button"
+                                id="number-actions"
+                                class="group-number__step-btn group-number__number--btn"
+                                data-ng-disabled="$ctrl.number.inEdition"
+                                data-uib-dropdown-toggle
+                            >
+                                <span
+                                    class="oui-icon oui-icon-hamburger_extra-thin group-number__number--btn-icon"
+                                    aria-hidden="true"
+                                ></span>
+                            </button>
+                            <ul
+                                class="dropdown-menu ovh-dropdown-menu group-number__number--dropdown"
+                                role="menu"
+                                data-aria-labelledby="number-actions"
+                                data-uib-dropdown-menu
+                            >
+                                <li
+                                    role="menuitem"
+                                    data-ng-class="{ divider: action.divider }"
+                                    data-ng-repeat="action in $ctrl.featureActions track by $index"
                                 >
-                                    <span data-ng-bind="action.text"></span>
-                                    <span
-                                        class="ovh-font ovh-font-backToV4 ml-2"
-                                    ></span>
-                                </a>
-                                <!-- END OF ACTION WITH URL -->
-                            </li>
-                        </ul>
+                                    <!-- ACTION WITH SREF -->
+                                    <a
+                                        class="btn btn-link w-100"
+                                        data-ui-sref="{{ action.sref }}"
+                                        data-ng-if="action.sref"
+                                        data-ng-bind="action.text"
+                                    >
+                                    </a>
+                                    <!-- END OF ACTION WITH SREF -->
+
+                                    <!-- ACTION WITH URL -->
+                                    <a
+                                        class="btn btn-link w-100"
+                                        data-ng-href="{{ action.url }}"
+                                        data-ng-if="action.url"
+                                        target="_blank"
+                                        rel="nofollow"
+                                    >
+                                        <span data-ng-bind="action.text"></span>
+                                        <span
+                                            class="ovh-font ovh-font-backToV4 ml-2"
+                                        ></span>
+                                    </a>
+                                    <!-- END OF ACTION WITH URL -->
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- MORE ACTIONS -->
                     </div>
-                    <!-- MORE ACTIONS -->
                 </div>
+                <!-- NUMBER DISPLAY -->
             </div>
-            <!-- NUMBER DISPLAY -->
+            <!-- HEADER -->
+
+            <!-- FEATURES -->
+            <div
+                class="telephony-number-feature"
+                data-ng-switch="$ctrl.number.getFeatureFamily()"
+            >
+                <!-- REDIRECT -->
+                <telephony-number-redirect
+                    data-ng-switch-when="redirect"
+                ></telephony-number-redirect>
+                <!-- REDIRECT -->
+
+                <!-- OVHPABX -->
+                <telephony-number-ovh-pabx
+                    data-ng-switch-when="ovhPabx"
+                ></telephony-number-ovh-pabx>
+                <!-- OVHPABX -->
+
+                <!-- SVI -->
+                <telephony-number-svi
+                    data-ng-switch-when="svi"
+                ></telephony-number-svi>
+                <!-- SVI -->
+
+                <!-- CONFERENCE -->
+                <telephony-number-conference
+                    data-ng-switch-when="conference"
+                ></telephony-number-conference>
+                <!-- CONFERENCE -->
+            </div>
+            <!-- FEATURES -->
         </div>
-        <!-- HEADER -->
-
-        <!-- FEATURES -->
-        <div
-            class="telephony-number-feature"
-            data-ng-switch="$ctrl.number.getFeatureFamily()"
-        >
-            <!-- REDIRECT -->
-            <telephony-number-redirect
-                data-ng-switch-when="redirect"
-            ></telephony-number-redirect>
-            <!-- REDIRECT -->
-
-            <!-- OVHPABX -->
-            <telephony-number-ovh-pabx
-                data-ng-switch-when="ovhPabx"
-            ></telephony-number-ovh-pabx>
-            <!-- OVHPABX -->
-
-            <!-- SVI -->
-            <telephony-number-svi
-                data-ng-switch-when="svi"
-            ></telephony-number-svi>
-            <!-- SVI -->
-
-            <!-- CONFERENCE -->
-            <telephony-number-conference
-                data-ng-switch-when="conference"
-            ></telephony-number-conference>
-            <!-- CONFERENCE -->
-        </div>
-        <!-- FEATURES -->
     </div>
 
     <footer

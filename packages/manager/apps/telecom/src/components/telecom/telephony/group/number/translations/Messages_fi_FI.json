@@ -4,6 +4,7 @@
   "telephony_number_save_doing": "Muutos keskeneräinen",
   "telephony_number_action_change_type": "Modifier le type de numéro",
   "telephony_number_action_scheduler": "Gérer les créneaux exceptionnels",
+  "telephony_number_action_layout": "Changer la disposition du CCS (vertical / horizontal)",
   "telephony_number_feature_redirect_to": "Rediriger vers",
   "telephony_number_feature_redirect_add_conditions": "Ajouter des conditions",
   "telephony_number_feature_redirect_not_set": "Aucune destination sélectionnée.",

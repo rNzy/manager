@@ -4,6 +4,7 @@
   "telephony_number_save_doing": "Modificando...",
   "telephony_number_action_change_type": "Cambiar el tipo de número",
   "telephony_number_action_scheduler": "Gestionar períodos excepcionales",
+  "telephony_number_action_layout": "Modificar la disposición del CCS (vertical / horizontal)",
   "telephony_number_feature_redirect_to": "Redirigir hacia",
   "telephony_number_feature_redirect_add_conditions": "Añadir condiciones",
   "telephony_number_feature_redirect_not_set": "Ningún destino seleccionado.",

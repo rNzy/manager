@@ -11,5 +11,5 @@
   "telephony_number_feature_ovh_pabx_dialplan_transfer_timeout_explain": "Lorsque le CCS comporte un transfert vers une ligne externe, si cette ligne ne décroche pas avant la durée configurée, l'appel passera à l'étape suivante.",
   "telephony_number_feature_ovh_pabx_dialplan_name_explain": "Ce nom sera présent sur le téléphone appelé lors d'un appel entrant.",
   "telephony_number_feature_ovh_pabx_dialplan_show_caller_number_alias": "Le numéro du CCS",
-  "telephony_number_feature_ovh_pabx_dialplan_show_caller_number_alias_explain": "Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de la ligne qui compose le numéro du CCS (ligne appelante)."
+  "telephony_number_feature_ovh_pabx_dialplan_show_caller_number_alias_explain": "Le téléphone cible (qui reçoit l'appel) verra sur son écran le numéro de l'alias (numéro qui est composé par l’appelant)."
 }

@@ -4,6 +4,7 @@
   "telephony_number_save_doing": "Keičiama",
   "telephony_number_action_change_type": "Keisti numerio tipą",
   "telephony_number_action_scheduler": "Valdyti išskirtinius laikus",
+  "telephony_number_action_layout": "Changer la disposition du CCS (vertical / horizontal)",
   "telephony_number_feature_redirect_to": "Nukreipiama į",
   "telephony_number_feature_redirect_add_conditions": "Pridėti sąlygas",
   "telephony_number_feature_redirect_not_set": "Nepasirinkti jokie siuntėjai.",
